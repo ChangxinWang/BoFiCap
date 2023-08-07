@@ -1,0 +1,11 @@
+_BASE_: transformer.yml
+reduce_on_plateau: true
+noamopt: false
+learning_rate: 0.00001
+learning_rate_decay_start: -1
+
+self_critical_after: 15
+max_epochs: 165
+
+train_sample_n: 1
+checkpoint_path: log_transformer_165

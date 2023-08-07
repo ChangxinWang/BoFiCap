@@ -1,0 +1,45 @@
+caption_model: transformer
+noamopt: true
+noamopt_warmup: 20000
+label_smoothing: 0.0
+input_json: data/cocotalk_stanza_kd80_syn_dep0.json
+input_label_h5: data/cocotalk_stanza_kd80_syn_dep0_label.h5
+input_att_dir: data/cocobu_att.lmdb
+seq_per_img: 5
+batch_size: 10
+learning_rate: 0.0005
+
+# Notice: because I'm to lazy, I reuse the option name for RNNs to set the hyperparameters for transformer:
+# N=num_layers
+# d_model=input_encoding_size
+# d_ff=rnn_size
+
+# will be ignored
+num_layers: 6
+input_encoding_size: 512
+rnn_size: 2048
+
+# Transformer config
+train_mode: SAIC
+preprocess_mode: phrase
+decoder_input_mode: add
+N_enc: 6
+N_dec: 6
+N_len: 1
+d_model: 512
+d_ff: 2048
+num_att_heads: 8
+dropout: 0.1
+
+
+learning_rate_decay_start: 0
+scheduled_sampling_start: -1 
+save_checkpoint_every: 3000
+# save_history_ckpt: 1
+checkpoint_path: SAIC
+language_eval: 1
+val_images_use: 5000
+max_epochs: 15
+train_sample_n: 5
+
+REFORWARD: false
